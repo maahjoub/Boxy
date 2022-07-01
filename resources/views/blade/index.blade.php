@@ -23,15 +23,20 @@
                             <td class="font-bold">{{ $member->name }}</td>
                             <td>{{ $member->hands }}</td>
                             <td class="d-flex justify-content-center align-items-center">
-                                <a href="{{ route('edit.form',$member->id) }}" class="btn btn-info m-1"><i class="fa fa-edit"></i></a>
                                 @if($member->deleted_at == null)
+                                <a href="{{ route('edit.form',$member->id) }}" class="btn btn-info m-1"><i class="fa fa-edit"></i></a>
                                     <form action="{{route('destroy', $member->id)}}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                     </form>
                                 @else
-                                    <a href="{{ route('posts.restore', $member->id) }}" class="btn btn-warning"><i class="fa fa-recycle"></i></a>
+                                    <form action="{{route('forceDestroy', $member->id)}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                                    </form>
+                                    <a href="{{ route('posts.restore', $member->id) }}" class="btn btn-warning m-1"><i class="fa fa-recycle"></i></a>
                                 @endif
                             </td>
                         </tr>

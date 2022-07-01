@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/add', [MembersController::class, 'store'])->name('store');
     Route::post('/edit', [MembersController::class, 'update'])->name('update');
     Route::delete('/destroy/{id}', [MembersController::class, 'destroy'])->name('destroy');
+    Route::delete('/forceDestroy/{id}', [MembersController::class, 'forceDestroy'])->name('forceDestroy');
     Route::get('restore/{id}', [MembersController::class, 'restore'])->name('posts.restore');
 
 });

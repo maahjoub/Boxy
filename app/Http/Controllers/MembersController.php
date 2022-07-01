@@ -74,6 +74,12 @@ class MembersController extends Controller
 
         return redirect()->back();
     }
+    public function forceDestroy($id)
+    {
+        Members::withTrashed()->find($id)->forceDelete();
+
+        return redirect()->back();
+    }
 
     private function storeToDataBase($request)
     {
