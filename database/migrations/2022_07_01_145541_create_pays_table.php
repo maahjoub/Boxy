@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('member_pay');
             $table->foreignId('member_id')->unsigned()->references('id')
                 ->on('members')->cascadeOnDelete();
-            $table->timestamps();
+            $table->date('pay_date');
         });
     }
 

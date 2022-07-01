@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MembersController;
+use App\Http\Controllers\PayController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/forceDestroy/{id}', [MembersController::class, 'forceDestroy'])->name('forceDestroy');
     Route::get('restore/{id}', [MembersController::class, 'restore'])->name('posts.restore');
 
+    // Pay Routes
+    Route::get('payment', [PayController::class, 'index'])->name('payment');
+    Route::get('payment/add/{id}', [PayController::class, 'pay'])->name('add.payment');
+    Route::post('pay/{id}', [PayController::class, 'store'])->name('pay.store');
 });
 
 Auth::routes();

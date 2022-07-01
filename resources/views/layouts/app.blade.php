@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
@@ -32,8 +33,10 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('payment') }}">الدفع</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -77,9 +80,17 @@
     <script src="{{ URL::asset('js/plugins-jquery.js') }}"></script>
     <scripts src="{{ asset('js/jquery.dataTables.min.js') }}"></scripts>
     <scripts src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></scripts>
+
+    <script src="{{ URL::asset('js/jquery-3.6.0.js') }}"></script>
+    <script src="{{ asset ('js/jquery-ui.js') }}"></script>
     <!--Custom Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <scripts src="{{ asset('js/main.js') }}"></scripts>
+    <script>
+        $(function() {
+            $("#datepicker").datepicker({dateFormat: "yy-m-d"});
+        });
+    </script>
 
 </body>
 </html>

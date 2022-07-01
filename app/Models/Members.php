@@ -10,4 +10,9 @@ class Members extends Model
 {
     use HasFactory, SoftDeletes;
     protected $guarded = [];
+
+    public function wanted()
+    {
+        return $this->hasMany(Wanted::class, 'member_id', 'id');
+    }
 }
