@@ -15,4 +15,8 @@ class Members extends Model
     {
         return $this->hasMany(Wanted::class, 'member_id', 'id');
     }
+    public function check()
+    {
+        return $this->hasMany(CheckOut::class, 'member_id', 'id');
+    }
 }

@@ -37,7 +37,7 @@
                             @enderror
                         </div>
                         <div class="form-group m-1">
-                            <button type="submit" class="form-control btn btn-secondary">إضافة</button>
+                            <button type="submit" class="form-control btn btn-secondary">تعديل</button>
                         </div>
                     </form>
                 </div>

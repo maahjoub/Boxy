@@ -34,9 +34,11 @@ class PayController extends Controller
                 'pay_date' => $request->date,
 
             ]);
+            $mem_payment =($wanted->mem_payment + $request->money);
+            $left_mony = ($wanted->all_wanted - $mem_payment);
             $wanted->update([
-                'mem_payment' => $request->money,
-                'mem_payment_left' => ($wanted->all_wanted - $request->money),
+                'mem_payment' => $mem_payment,
+                'mem_payment_left' => $left_mony,
             ]);
             DB::commit();
             return redirect()->route('payment');

@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('check_outs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('member_id')->unsigned()->references('id')
+                    ->on('members')->cascadeOnDelete();
+            $table->integer('hand_number');
             $table->timestamps();
         });
     }

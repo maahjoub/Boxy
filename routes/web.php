@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CheckOutController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\PayController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +30,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('payment', [PayController::class, 'index'])->name('payment');
     Route::get('payment/add/{id}', [PayController::class, 'pay'])->name('add.payment');
     Route::post('pay/{id}', [PayController::class, 'store'])->name('pay.store');
+    Route::post('check/{id}', [CheckOutController::class, 'checkOut'])->name('check.out');
+    Route::post('uncheck/{id}', [CheckOutController::class, 'unCheckOut'])->name('uncheck.out');
+    Route::post('deleteAll', [CheckOutController::class, 'deleteAll'])->name('deleteAll');
+
+    // Invoice Route
+    Route::get('invoice', [InvoiceController::class, 'index'])->name('invoice.index');
 });
 
 Auth::routes();

@@ -9,15 +9,11 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -36,6 +32,10 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('payment') }}">الدفع</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('invoice.index') }}">التقرير العام للصندوق</a>
                         </li>
                     </ul>
 
@@ -76,13 +76,13 @@
             @yield('content')
         </main>
     </div>
-    <scripts src="{{ asset('js/jquery-3.3.1.min.js') }}"></scripts>
-    <script src="{{ URL::asset('js/plugins-jquery.js') }}"></script>
-    <scripts src="{{ asset('js/jquery.dataTables.min.js') }}"></scripts>
-    <scripts src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></scripts>
 
     <script src="{{ URL::asset('js/jquery-3.6.0.js') }}"></script>
+    <script src="{{ URL::asset('js/plugins-jquery.js') }}"></script>
+    <scripts src="{{ asset('js/bootstrap-datatables/ar/jquery.dataTables.min.js') }}"></scripts>
+    <scripts src="{{ asset('js/bootstrap-datatables/ar/dataTables.bootstrap4.min.js') }}"></scripts>
     <script src="{{ asset ('js/jquery-ui.js') }}"></script>
+
     <!--Custom Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <scripts src="{{ asset('js/main.js') }}"></scripts>
@@ -91,6 +91,11 @@
             $("#datepicker").datepicker({dateFormat: "yy-m-d"});
         });
     </script>
-
+    <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable();
+        } );
+    </script>
+    @yield('scripts')
 </body>
 </html>
